@@ -1,0 +1,124 @@
+let numberA = '';
+let numberB = '';
+let harusResetLayar = false;
+let operasiSaatIni = null;
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+const samadenganBtn = document.querySelector('#equalsBtn');
+const hapusSemuaBtn = document.querySelector('#clearBtn');
+// const hapusBtn = document.querySelector();
+const titikBtn = document.querySelector('#pointBtn');
+const operasiLayarTerakhir = document.querySelector('#operasiLayarTerakhir');
+const operasiLayarSekarang = document.querySelector('#operasiLayarSekarang');
+
+samadenganBtn.addEventListener('click', evaluate);
+hapusSemuaBtn.addEventListener('click', hapusSemua)
+titikBtn.addEventListener('click', masukanTitik);
+
+numberButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        masukanNumberKeLayar(button.textContent);
+    });
+});
+
+operatorButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        setOperation(button.textContent);
+    });
+});
+
+function masukanNumberKeLayar(number) {
+    if (operasiLayarSekarang.textContent === '0' || harusResetLayar) {
+        resetLayar();
+    };
+    operasiLayarSekarang.textContent += number;
+};
+
+function resetLayar() {
+    operasiLayarSekarang.textContent = '';
+    harusResetLayar = false;
+};
+
+function setOperation(operator) {
+    if (operasiSaatIni !== null) {
+        evaluate();
+    };
+    numberA = operasiLayarSekarang.textContent;
+    operasiSaatIni = operator;
+    operasiLayarTerakhir.textContent = `${numberA} ${operasiSaatIni}`;
+    harusResetLayar = true;
+};
+
+function evaluate() {
+    if (operasiSaatIni === null || harusResetLayar) return;
+    if (operasiSaatIni === '/' && operasiLayarSekarang.textContent === '0') {
+        alert("Anda tidak dapat membagi dengan angka 0")
+        return;
+    };
+    numberB = operasiLayarSekarang.textContent;
+    operasiLayarSekarang.textContent = roundResult(
+        operate(operasiSaatIni, numberA, numberB)
+    );
+    operasiLayarTerakhir.textContent = `${numberA} ${operasiSaatIni} ${numberB} =`;
+    operasiSaatIni = null;
+}
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;    // You should round answers with long decimals so that they don’t overflow the screen.
+};
+
+function hapusSemua() {
+    operasiLayarSekarang.textContent = '0';
+    operasiLayarTerakhir.textContent = '';
+    numberA = '';
+    numberB = '';
+    operasiSaatIni = null;
+};
+
+function masukanTitik(){
+    if(harusResetLayar){
+        resetLayar();
+    };
+    if(operasiLayarSekarang.textContent === ''){
+        operasiLayarSekarang.textContent = '0';
+    };
+    if(operasiLayarSekarang.textContent.includes('.')){
+        return;
+    };
+    operasiLayarSekarang.textContent += '.';
+}
+
+function tambah(a, b) {
+    return a + b;
+};
+function kurang(a, b) {
+    return a - b;
+};
+function kali(a, b) {
+    return a * b;
+};
+function bagi(a, b) {
+    return a / b;
+};
+
+function operate(operator, numberA, numberB) {
+    numberA = Number(numberA);
+    numberB = Number(numberB);
+    switch (operator) {
+        case '+':
+            return tambah(numberA, numberB);
+        case '-':
+            return kurang(numberA, numberB);
+        case 'x':
+            return kali(numberA, numberB);
+        case '/':
+            if (numberB === 0) {
+                return null;
+            } else {
+                return bagi(numberA, numberB)
+            }
+        default:
+            return null;
+    }
+};

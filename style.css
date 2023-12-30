@@ -1,74 +1,74 @@
-*, *::after, *::before {
+/** changing default styles of the browser **/
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 body {
-    gap: 1rem;
-    background-color: forestgreen;
-    max-width: 42ch;
-    min-width: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    padding: 0.875rem;
+    font-weight: normal;
+    font-family: Gotham Rounded, sans-serif;
+    background-color: gray;
 }
-main {
-    border-radius: 0.25rem;
-    padding: 2rem;
-    background-color: grey;
-}
-input, textarea, button, select {
-    font: inherit;
-}
-h1 {
-    margin: 0rem 0rem 0.5rem 0rem;
-    padding: 0rem 0rem 0rem 0rem;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -0.25rem;
-    scroll-margin: 5rem;
-}
-p {
-    margin: 0rem 0rem 0.75rem 0rem;
-    padding: 0rem 0rem 0rem 0rem;
-    line-height: 1.5rem;
-}
-.output {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border: 1px solid orange;
-    background-color: cyan;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-}
-.hasil {
-    font-size: 0.75rem;
-    line-height: 1.5rem;
-    color: white;
-}
+
 .calculator {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    align-content: center;
+    justify-content: center;
+    min-height: 100vh;
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-columns: repeat(4, 100px);
 }
-button {
-    background-color: #e5e7eb;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    border-radius: 0.5rem 0.25rem;
-    font-family: monospace;
-    border: transparent;
-    padding: 0.5rem;
-    text-transform: uppercase;
-    transition: all;
-    transition-delay: 75ms;
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-button:hover {
+
+.calculator-grid>button {
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+    font-size: 2rem;
+    border: 1px solid #fff;
     cursor: pointer;
 }
-button:active {
-    background-color: hsla(220, 13%, 91%, 0.5);
+
+.calculator-grid>button:hover {
+    /** previously written code **/
+    background-color: rgba(255, 255, 255, .9)
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.layar {
+    background-color: rgba(0, 0, 0, .75);
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 9px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.layar-terakhir {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.layar-sekarang {
+    font-size: 2.5rem;
+    color: white;
+}
+
+#clearBtn{
+    background: red;
+}
+#deleteBtn{
+    background: yellow;
+}
+#pointBtn{
+ font-weight: bold;   
+}
+#equalsBtn{
+    background: green;
+    font-weight: bold;
 }

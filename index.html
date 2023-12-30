@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Project: Calculator</title>
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
-    </head>
-    <body>
-        <header>
-            <h1>Project Calculator</h1>
-        </header>
-        <main>
-            <section class="hasil">
-                <div data-previous-operand class="previous-operand">previouse-operand</div>
-            </section>
-            <section class="output">
-                <div data-current-operand class="current-operand"></div>
-            </section>
-            <section class="calculator">
-                <button data-delete>DEL</button>
-                <button data-all-clear>AC</button>
-                <button data-off>OFF</button>
-                <button data-on>ON</button>
-                <button data-operation>+</button> <!-- Tambah -->
-                <button data-operation>-</button> <!-- Kurang -->
-                <button data-operation>*</button> <!-- Kali -->
-                <button data-operation>/</button> <!-- Bagi -->
-                <button data-number>0</button> <!-- 0 -->
-                <button data-number>1</button> <!-- 1 -->
-                <button data-number>2</button> <!-- 2 -->
-                <button data-number>3</button> <!-- 3 -->
-                <button data-number>4</button> <!-- 4 -->
-                <button data-number>5</button> <!-- 5 -->
-                <button data-number>6</button> <!-- 6 -->
-                <button data-number>7</button> <!-- 7 -->
-                <button data-number>8</button> <!-- 8 -->
-                <button data-number>9</button> <!-- 9 -->
-                <button data-samadengan>&#61</button> <!-- Samadengan -->
-            </section>
-        </main>
-        <footer></footer>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <div class="layar">
+            <div class="layar-terakhir" id="operasiLayarTerakhir"></div>
+            <div class="layar-sekarang" id="operasiLayarSekarang">0</div>
+        </div>
+        <button class="calculator__key span-two" id="clearBtn">AC</button>
+        <button class="calculator__key" id="deleteBtn">DEL</button>
+        <button class="calculator__key calculator__key--operator" data-operator>/</button>
+        <button class="calculator__key" data-number>1</button>
+        <button class="calculator__key" data-number>2</button>
+        <button class="calculator__key" data-number>3</button>
+        <button class="calculator__key calculator__key--operator" data-operator>x</button>
+        <button class="calculator__key" data-number>4</button>
+        <button class="calculator__key" data-number>5</button>
+        <button class="calculator__key" data-number>6</button>
+        <button class="calculator__key calculator__key--operator" data-operator>+</button>
+        <button class="calculator__key" data-number>7</button>
+        <button class="calculator__key" data-number>8</button>
+        <button class="calculator__key" data-number>9</button>
+        <button class="calculator__key calculator__key--operator" data-operator>-</button>
+        <button class="calculator__key" id="pointBtn">.</button>
+        <button class="calculator__key" data-number>0</button>
+        <button class="calculator__key calculator__key--enter span-two" id="equalsBtn">=</button>
+
+    </div>
+
+</body>
+
 </html>
