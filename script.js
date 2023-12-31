@@ -7,7 +7,7 @@ const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 const samadenganBtn = document.querySelector('#equalsBtn');
 const hapusSemuaBtn = document.querySelector('#clearBtn');
-// const hapusBtn = document.querySelector();
+const hapusBtn = document.querySelector('#deleteBtn');
 const titikBtn = document.querySelector('#pointBtn');
 const operasiLayarTerakhir = document.querySelector('#operasiLayarTerakhir');
 const operasiLayarSekarang = document.querySelector('#operasiLayarSekarang');
@@ -15,6 +15,7 @@ const operasiLayarSekarang = document.querySelector('#operasiLayarSekarang');
 samadenganBtn.addEventListener('click', evaluate);
 hapusSemuaBtn.addEventListener('click', hapusSemua)
 titikBtn.addEventListener('click', masukanTitik);
+hapusBtn.addEventListener('click', hapusSatuNumber);
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -87,6 +88,12 @@ function masukanTitik(){
         return;
     };
     operasiLayarSekarang.textContent += '.';
+};
+
+function hapusSatuNumber(){
+    operasiLayarSekarang.textContent = operasiLayarSekarang.textContent
+    .toString()
+    .slice(0, -1);
 }
 
 function tambah(a, b) {
