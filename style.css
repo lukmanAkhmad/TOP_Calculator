@@ -59,16 +59,19 @@ body {
     color: white;
 }
 
-#clearBtn{
+#clearBtn {
     background: red;
 }
-#deleteBtn{
+
+#deleteBtn {
     background: yellow;
 }
-#pointBtn{
- font-weight: bold;   
+
+#pointBtn {
+    font-weight: bold;
 }
-#equalsBtn{
+
+#equalsBtn {
     background: green;
     font-weight: bold;
 }

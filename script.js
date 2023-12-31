@@ -16,6 +16,7 @@ samadenganBtn.addEventListener('click', evaluate);
 hapusSemuaBtn.addEventListener('click', hapusSemua)
 titikBtn.addEventListener('click', masukanTitik);
 hapusBtn.addEventListener('click', hapusSatuNumber);
+window.addEventListener('keydown', inputDenganKeyboard);
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -77,23 +78,41 @@ function hapusSemua() {
     operasiSaatIni = null;
 };
 
-function masukanTitik(){
-    if(harusResetLayar){
+function masukanTitik() {
+    if (harusResetLayar) {
         resetLayar();
     };
-    if(operasiLayarSekarang.textContent === ''){
+    if (operasiLayarSekarang.textContent === '') {
         operasiLayarSekarang.textContent = '0';
     };
-    if(operasiLayarSekarang.textContent.includes('.')){
+    if (operasiLayarSekarang.textContent.includes('.')) {
         return;
     };
     operasiLayarSekarang.textContent += '.';
 };
 
-function hapusSatuNumber(){
+function hapusSatuNumber() {
     operasiLayarSekarang.textContent = operasiLayarSekarang.textContent
-    .toString()
-    .slice(0, -1);
+        .toString()
+        .slice(0, -1);
+}
+
+function inputDenganKeyboard(e) {
+    if (e.key >= 0 && e.key <= 9) masukanNumberKeLayar(e.key);
+    if (e.key === '.') masukanTitik();
+    if (e.key === '=' || e.key === 'Enter') evaluate();
+    if (e.key === 'Backspace') hapusSatuNumber();
+    if (e.key === 'Escape') hapusSemua();
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        setOperation(convertOperator(e.key));
+    };
+};
+
+function convertOperator(keyboardOperator) {
+    if (keyboardOperator === '+') return '+';
+    if (keyboardOperator === '-') return '-';
+    if (keyboardOperator === '*') return 'x';
+    if (keyboardOperator === '/') return '/';
 }
 
 function tambah(a, b) {
