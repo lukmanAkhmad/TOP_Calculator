@@ -67,7 +67,7 @@ function evaluate() {
 }
 
 function roundResult(number) {
-    return Math.round(number * 1000) / 1000;    // You should round answers with long decimals so that they don’t overflow the screen.
+    return Math.round(number * 1000) / 1000;    // mengubah ke bilangan desimal
 };
 
 function hapusSemua() {
